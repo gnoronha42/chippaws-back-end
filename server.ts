@@ -1,10 +1,9 @@
 import express from "express";
 import { connect } from "./src/database/database";
-import userRoutes from "./src/app/routes/userRoutes";
+
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import router from "./src/app/routes/userRoutes";
-import User from "./src/app/models/User";
+import userRoutes from "./src/app/routes/userRoutes";
 
 const app = express();
 const port = 3000;
@@ -18,7 +17,7 @@ const swaggerOptions = {
       version: "1.0.0",
     },
   },
-  apis: ["./app/routes/userRoutes.ts"], // Defina o caminho para o arquivo de rota da sua API
+  apis: ["./src/app/routes/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
