@@ -16,6 +16,25 @@ const swaggerOptions = {
       title: "API Documentation",
       version: "1.0.0",
     },
+    paths: {},
+    components: {
+      schemas: {
+        User: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string",
+            },
+            email: {
+              type: "string",
+            },
+            age: {
+              type: "number",
+            },
+          },
+        },
+      },
+    },
   },
   apis: ["./src/app/routes/*.ts"],
 };
