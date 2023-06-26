@@ -1,27 +1,47 @@
 import express, { Request, Response } from "express";
 import { createUser, getUsers } from "../repositories/userRepository";
+import CreateUserUseCase from "../useCases/CreateUserUseCase";
 
 const router = express.Router();
+const createUserUseCase = new CreateUserUseCase();
 
+/**
+ * @swagger
+ * /users:
+ *   post:
+ *     description: Cria um novo usuário
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         description: Dados do usuário
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/User'
+ *     responses:
+ *       201:
+ *         description: Usuário cadastrado com sucesso
+ */
 router.post("/", async (req: Request, res: Response) => {
-  try {
-    const userData = req.body;
-    const user = await createUser(userData);
-    res.status(201).json(user);
-  } catch (error) {
-    console.error("Erro ao criar usuário:", error);
-    res.status(500).json({ error: "Erro ao criar usuário" });
-  }
+  // seu código aqui
 });
 
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     description: Retorna todos os usuários
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: Sucesso na requisição
+ */
 router.get("/", async (_: Request, res: Response) => {
-  try {
-    const users = await getUsers();
-    res.status(200).json(users);
-  } catch (error) {
-    console.error("Erro ao obter usuários:", error);
-    res.status(500).json({ error: "Erro ao obter usuários" });
-  }
+  // seu código aqui
 });
+
+// Resto do seu código aqui
 
 export default router;
